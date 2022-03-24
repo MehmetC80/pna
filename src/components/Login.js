@@ -1,18 +1,23 @@
 import React, { useState, useEffect } from "react";
-
 import Header from "./Header";
 import Nav from "./Nav";
 import { useNavigate } from "react-router-dom";
+// import jwt from "jsonwebtoken";
 
 const Login = () => {
   const [email, setEmail] = useState("");
   const [password, setPassword] = useState("");
-
+  const [users, setUsers] = useState("");
   let navigate = useNavigate();
   const routeChange = () => {
     let path = `/Registration`;
     navigate(path);
   };
+
+  // const expiresIn = "1h";
+  // const SECRET_KEY = "12345654321";
+
+  // const token = jwt.decode(SECRET_KEY);
 
   const submitLogin = async () => {
     const res = await fetch("http://localhost:3500/users", {
@@ -20,9 +25,13 @@ const Login = () => {
       headers: { "Content-Type": "application/json" },
       body: JSON.stringify({ email, password }),
     });
-
-    setEmail(res);
-    setPassword(res);
+    // setUsers(res);
+    // if (isAuthenticated({ email, password })) {
+    //   const status = 401;
+    //   const message = "Email & Password existieren";
+    //   res.status(status).json({ status, message });
+    //   return;
+    // }
 
     // if (res.filter((m) => m.email === email)) {
     //   console.log("user existiert");
@@ -31,10 +40,17 @@ const Login = () => {
     //   console.log("user existiert nicht.");
   };
 
-const SECRET_KEY="12345654321";
+  // function createToken(payload) {
+  //   return jwt.sign(payload, SECRET_KEY, { expiresIn });
+  // }
 
-
-
+  // function isAuthenticated({ email, password }) {
+  //   return (
+  //     users.filter(
+  //       (user) => user.email === email && user.password === password
+  //     ) !== -1
+  //   );
+  // }
 
   return (
     <div className="login">

@@ -27,25 +27,16 @@
       "lastName": "Doe",
       "email": "doe@gmail.com",
       "password": "654321"
-    }
-  ],
-  "todos": [
-    {
-      "id": 1,
-      "checked": false,
-      "todo": "sdfwfwf"
     },
     {
-      "id": 2,
-      "checked": false,
-      "todo": "lhjlbvl"
-    },
-    {
-      "id": 3,
-      "checked": false,
-      "todo": "vlglgiul"
+      "id": "41ddfecf-ce08-42c3-99a4-f718378b64d9",
+      "firstName": "Mehmet",
+      "lastName": "x",
+      "email": "test@web.de",
+      "password": "123456"
     }
   ],
+  "todos": [],
   "login": [
     {}
   ]

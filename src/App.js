@@ -2,7 +2,6 @@ import Home from "./components/Home";
 import Login from "./components/Login";
 import Registration from "./components/Registration";
 import Todo from "./components/todo/Todo";
-//import Missing from "./Missing";
 
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 //import { useState, useEffect } from "react";
