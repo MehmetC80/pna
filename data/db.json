@@ -1,0 +1,38 @@
+{
+  "users": [
+    {
+      "id": "400f6155-424c-4689-9a01-7e7af48e50ab",
+      "firstName": "Mehmet",
+      "lastName": "Rambo",
+      "email": "m.cetinkaya@hotmail.de",
+      "password": "123456"
+    },
+    {
+      "id": "9e568337-834a-462e-aa49-606349a2cea6",
+      "firstName": "",
+      "lastName": "",
+      "email": "",
+      "password": ""
+    }
+  ],
+  "todos": [
+    {
+      "id": 1,
+      "checked": false,
+      "todo": "swsw"
+    },
+    {
+      "id": 2,
+      "checked": false,
+      "todo": "wdwd"
+    },
+    {
+      "id": 3,
+      "checked": false,
+      "todo": "xsx"
+    }
+  ],
+  "login": [
+    {}
+  ]
+}

@@ -1,13 +1,235 @@
-body {
+* {
   margin: 0;
-  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
-    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+  padding: 0;
+  box-sizing: border-box;
+}
+
+:root {
+  font-size: 62.5%;
+}
+
+body {
+  min-height: 100vh;
+  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", "Roboto", "Oxygen",
+    "Ubuntu", "Cantarell", "Fira Sans", "Droid Sans", "Helvetica Neue",
     sans-serif;
   -webkit-font-smoothing: antialiased;
   -moz-osx-font-smoothing: grayscale;
+  background: #282c34;
+  font-size: 1.6rem;
 }
 
 code {
-  font-family: source-code-pro, Menlo, Monaco, Consolas, 'Courier New',
+  font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
+}
+
+.App {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 2px);
+  max-width: 800px;
+  margin: auto;
+}
+
+.Home {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  height: calc(100vh - 2px);
+  max-width: 800px;
+  margin: auto;
+}
+
+header {
+  background-color: #f2f2f2;
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  height: 10vh;
+  margin-bottom: 1rem;
+}
+
+header h1,
+header h4 {
+  color: #282c34;
+}
+
+.navbar {
+  padding: 2rem;
+  width: 100%;
+  background-color: #f2f2f2;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 5rem;
+}
+
+.navbar a {
+  margin-left: 1.8rem;
+  text-decoration: none;
+  padding: 0.6rem;
+  color: #282c34;
+}
+
+.navbar a:hover {
+  color: limegreen;
+  transition: all 500ms;
+}
+
+main {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  flex-grow: 1;
+  justify-content: flex-start;
+  align-items: center;
+  overflow-y: auto;
+}
+
+footer {
+  width: 100%;
+  height: 5vh;
+  padding: 0.25em;
+  background-color: #f2f2f2;
+  color: #282c34;
+  display: grid;
+  place-content: center;
+}
+.login,
+.registration {
+  width: 100%;
+  height: 100vh;
+  margin-top: 1rem;
+}
+
+.btnLogin,
+.btnRegis,
+.btnReset {
+  display: inline-block;
+  margin: 3rem 0 0 0;
+  padding: 1rem 2rem;
+  border-radius: 0.7rem;
+  font-size: medium;
+  font-weight: bold;
+  transition: all 500ms;
+  width: 45%;
+  margin-right: 0.4rem;
+}
+
+.btnReset {
+  margin-left: 1rem;
+}
+
+.btnLogin:hover,
+.btnRegis:hover {
+  background-color: limegreen;
+  transition: all 200ms;
+}
+
+.login form input,
+.registration form input {
+  display: block;
+  margin: 1.5rem 0;
+  width: 100%;
+  height: 3.7rem;
+  border-radius: 1rem;
+  padding: 1.5rem;
+  font-size: 2rem;
+}
+
+ul {
+  width: 100%;
+  list-style: none;
+  padding: 0 0.25rem 0.25rem;
+}
+
+ul li::before {
+  content: "\200B";
+}
+
+.Todo {
+  width: 100%;
+  height: 100vh;
+}
+
+.todo {
+  display: flex;
+  justify-content: flex-start;
+  align-items: center;
+  padding: 0.5rem 0 0.5rem 0.5rem;
+  margin: 1rem 0;
+  color: #eee;
+  background-color: #282c34;
+  font-size: 4rem;
+}
+
+#addTodo {
+  margin-right: 0.5rem;
+}
+
+.todo > label {
+  font-size: 3rem;
+  flex-grow: 1;
+  margin-left: 2rem;
+}
+
+.toto ul li input {
+  font-size: 110%;
+}
+
+input[type="checkbox"] {
+  margin: 2rem 1.5rem;
+  border-radius: 5px;
+  transform: scale(2.5);
+}
+
+#btnDetails {
+  width: 8%;
+  font-size: 1.7rem;
+  padding: 0.3rem 0rem;
+  margin-right: 1.5rem;
+  border-radius: 1rem;
+}
+#btnDetails:hover {
+  background-color: cornflowerblue;
+  transition: all 200ms;
+}
+
+.todo svg:focus,
+.todo svg:hover {
+  color: rgb(158, 38, 38);
+  outline: none;
+}
+
+.addForm {
+  width: 100%;
+}
+
+.searchForm {
+  width: 100%;
+}
+
+.addForm label {
+  font-size: 3rem;
+  margin-right: 2rem;
+}
+
+.searchForm label {
+  font-size: 3rem;
+  margin-right: 5rem;
+}
+
+.addForm input,
+.searchForm input {
+  font-size: 2.5rem;
+}
+
+.addForm button {
+  font-size: 2.2rem;
 }
