@@ -8,10 +8,15 @@ import SearchTodo from "../SearchTodo";
 function Todo() {
   const url = "http://localhost:3500/todos";
 
-  const [todos, setTodos] = useState(null);
+  const [todos, setTodos] = useState([]);
   const [newTodo, setNewTodo] = useState("");
   const [search, setSearch] = useState("");
+  const [fetchError, setFetchError] = useState(null);
+  const [isLoading, setIsLoading] = useState(true);
 
+  let anzahl = todos.length;
+  let erledigt = todos.filter((todo) => todo.checked === true).length;
+  let offen = anzahl - erledigt;
   // useEffect(() => {
   //   (async () => {
   //     const response = await fetch(url);
@@ -20,23 +25,41 @@ function Todo() {
   //   })();
   // }, []);
 
+  // useEffect(() => {
+  //   fetch(url)
+  //     .then((res) => {
+  //       return res.json();
+  //     })
+  //     .then((data) => {
+  //       setTodos(data);
+  //     });
+  // }, []);
+
   useEffect(() => {
-    fetch(url)
-      .then((res) => {
-        return res.json();
-      })
-      .then((data) => {
-        setTodos(data);
-      });
+    const fetchItems = async () => {
+      try {
+        const response = await fetch(url);
+        if (!response.ok) throw Error("Keine Daten erhalten.");
+        const listTodos = await response.json();
+        setTodos(listTodos);
+        setFetchError(null);
+      } catch (err) {
+        setFetchError(err.message);
+      } finally {
+        setIsLoading(false);
+      }
+    };
+
+    setTimeout(() => fetchItems(), 2000);
   }, []);
 
-  const addTodo = (todo) => {
+  const addTodo = async (todo) => {
     const id = todos.length ? todos[todos.length - 1].id + 1 : 1;
     const myNewTodo = { id, checked: false, todo };
     const listTodos = [...todos, myNewTodo];
     setTodos(listTodos);
 
-    const requestOptions = {
+    const postOptions = {
       method: "POST",
       headers: {
         "Content-Type": "application/json",
@@ -44,7 +67,8 @@ function Todo() {
       body: JSON.stringify(myNewTodo),
     };
 
-    fetch(url, requestOptions).then((response) => response.json());
+    const result = await fetch(url, postOptions);
+    if (result) setFetchError(result);
   };
 
   const handleSubmit = (e) => {
@@ -54,14 +78,18 @@ function Todo() {
     setNewTodo("");
   };
 
-  const handleDelete = (id) => {
+  const handleDelete = async (id) => {
     const listTodos = todos.filter((todo) => todo.id !== id);
     setTodos(listTodos);
 
     const requestOptions = {
       method: "DELETE",
     };
-    fetch(`http://localhost:3500/todos/${id}`, requestOptions);
+    const result = await fetch(
+      `http://localhost:3500/todos/${id}`,
+      requestOptions
+    );
+    if (result) setFetchError(result);
   };
 
   const handleCheck = async (id) => {
@@ -78,11 +106,9 @@ function Todo() {
       },
       body: JSON.stringify({ ckecked: myTodo[0].ckecked }),
     };
-    // fetch(`http://localhost:3100/todos/${id}`, updateOptions).then((response) =>
-    //   response.json().then((data) => {})
-    // );
     const reqUrl = `http://localhost:3500/todos/${id}`;
-    await fetch(reqUrl, updateOptions);
+    const result = await fetch(reqUrl, updateOptions);
+    if (result) setFetchError(result);
   };
 
   return (
@@ -90,44 +116,43 @@ function Todo() {
       <Header title="Meine Todo-Liste" />
       <Nav />
       <main className="todo">
-        {todos && (
-          <AddTodo
-            newTodo={newTodo}
-            setNewTodo={setNewTodo}
-            handleSubmit={handleSubmit}
-          />
-        )}
-
-        <SearchTodo
-          search={search}
-          setSerarch={setSearch}
-          // todos={todos.filter((todo) =>
-          //   todo.todo.toLowerCase().includes(search.toLowerCase())
-          // )}
+        <AddTodo
+          newTodo={newTodo}
+          setNewTodo={setNewTodo}
+          handleSubmit={handleSubmit}
         />
-        {todos && todos.length ? (
+        <SearchTodo search={search} setSearch={setSearch} />
+        <p>Anzahl Todos: {anzahl}</p>
+        <p>Erledigt: {erledigt}</p>
+        <p>Offen: {offen}</p>
+        {todos.length ? (
           <ul>
             {todos.map((todo) => (
               <li className="todo" key={todo.id}>
-                {todos && (
+                {
                   <input
                     type="checkbox"
-                    onChange={() => {
-                      handleCheck(todo.id);
-                    }}
+                    onChange={() => handleCheck(todo.id)}
                     checked={todo.checked}
                   />
-                )}
-                <label>{todo.todo}</label>
+                }
+                <label
+                  style={
+                    todo.checked ? { textDecoration: "line-through" } : null
+                  }
+                  onDoubleClick={() => handleCheck(todo.id)}
+                >
+                  {todo.todo}
+                </label>
                 <button id="btnDetails">Info</button>
 
-                {todos && (
+                {
                   <FaTrashAlt
                     role="button"
                     tabIndex="0"
                     onClick={() => handleDelete(todo.id)}
                   />
-                )}
+                }
               </li>
             ))}
           </ul>

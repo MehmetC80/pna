@@ -15,26 +15,26 @@ const Login = () => {
   };
 
   const submitLogin = async () => {
-    fetch("http://localhost:3500/users", {
-      method: "POST",
+    const res = await fetch("http://localhost:3500/users", {
+      method: "GET",
       headers: { "Content-Type": "application/json" },
-      credentials: "include",
       body: JSON.stringify({ email, password }),
     });
-    navigate("/todo/Todo");
+
+    setEmail(res);
+    setPassword(res);
+
+    // if (res.filter((m) => m.email === email)) {
+    //   console.log("user existiert");
+    //   navigate("/todo/Todo");
+    // } else {
+    //   console.log("user existiert nicht.");
   };
 
-  // const [users, setUsers] = useState(null);
+const SECRET_KEY="12345654321";
 
-  // useEffect(() => {
-  //   fetch("http://loclhost:8000/users")
-  //     .then((res) => {
-  //       return res.json();
-  //     })
-  //     .then((data) => {
-  //       console.log(data);
-  //     });
-  // }, []);
+
+
 
   return (
     <div className="login">

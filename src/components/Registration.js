@@ -5,7 +5,7 @@ import { useEffect, useState } from "react";
 import { v4 as uuidv4 } from "uuid";
 import { useNavigate } from "react-router-dom";
 
-const url = "http://localhost:3100/users";
+const url = "http://localhost:3500/users";
 
 const Registration = () => {
   const [users, setUsers] = useState([]);
@@ -22,7 +22,6 @@ const Registration = () => {
       const response = await fetch(url);
       const data = await response.json();
       setUsers(data);
-      console.log(data);
     })();
   }, []);
 
@@ -43,12 +42,15 @@ const Registration = () => {
         }),
       };
 
-      fetch(url, requestOptions)
-        .then((response) => response.json())
-        .then((data) => {
-          users.push(data);
-        });
+      const result = fetch(url, requestOptions);
+      setUsers(result);
       navigate("/Login");
+      // fetch(url, requestOptions)
+      //     .then((response) => response.json())
+      //     .then((data) => {
+      //       users.push(data);
+      //     });
+      // navigate("/Login");
     }
   };
 

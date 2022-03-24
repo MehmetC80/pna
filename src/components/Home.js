@@ -6,7 +6,6 @@ const Home = () => {
     <div className="Home">
       <Header title="PNA" subTitle="Personal Note App" />;
       <Nav />
-      <main></main>
     </div>
   );
 };
