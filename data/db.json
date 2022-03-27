@@ -8,13 +8,6 @@
       "password": "123456"
     },
     {
-      "id": "9e568337-834a-462e-aa49-606349a2cea6",
-      "firstName": "",
-      "lastName": "",
-      "email": "",
-      "password": ""
-    },
-    {
       "id": "056152f1-92e7-44b9-84d4-e270186c93ec",
       "firstName": "Mehmet",
       "lastName": "Cetinkaya",
@@ -29,11 +22,25 @@
       "password": "654321"
     },
     {
-      "id": "41ddfecf-ce08-42c3-99a4-f718378b64d9",
-      "firstName": "Mehmet",
-      "lastName": "x",
-      "email": "test@web.de",
+      "id": "352c0023-9e72-4229-90b9-9e565d9a4101",
+      "firstName": "memo",
+      "lastName": "can",
+      "email": "gggg@gmail.com",
       "password": "123456"
+    },
+    {
+      "id": "36ba811a-0a63-4fdc-9ab6-632bb3fa6d41",
+      "firstName": "fegrg",
+      "lastName": "can",
+      "email": "gggg@gmail.com",
+      "password": "123456"
+    },
+    {
+      "id": "f6474b6c-fd17-41bc-965a-c0537302c26a",
+      "firstName": "memo",
+      "lastName": "wwwwww",
+      "email": "sssss@we",
+      "password": "12345678"
     }
   ],
   "todos": [],

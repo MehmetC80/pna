@@ -14,11 +14,6 @@ const Login = () => {
     navigate(path);
   };
 
-  // const expiresIn = "1h";
-  // const SECRET_KEY = "12345654321";
-
-  // const token = jwt.decode(SECRET_KEY);
-
   const submitLogin = async () => {
     const res = await fetch("http://localhost:3500/users", {
       method: "GET",

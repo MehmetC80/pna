@@ -135,7 +135,7 @@ footer {
 }
 
 .login form input,
-.registration form input {
+.registration main form input {
   display: block;
   margin: 1.5rem 0;
   width: 100%;
@@ -234,4 +234,11 @@ input[type="checkbox"] {
 
 .addForm button {
   font-size: 2.2rem;
+}
+
+#errorRegister {
+  color: rgb(163, 20, 20);
+  font-size: 20px;
+  font-weight: 500;
+  padding-left: 1rem;
 }

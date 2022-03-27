@@ -4,7 +4,7 @@ import { useState, useEffect } from "react";
 import { FaTrashAlt } from "react-icons/fa";
 import AddTodo from "./AddTodo";
 import SearchTodo from "../SearchTodo";
-// import Footer from "../Footer";
+
 function Todo() {
   const url = "http://localhost:3500/todos";
 
@@ -111,6 +111,13 @@ function Todo() {
     if (result) setFetchError(result);
   };
 
+  const handleSearch = async () => {
+    const todoList = todos.filter((todo) =>
+      todo.todo.toLowerCase().includes(search.toLowerCase())
+    );
+    setTodos(setSearch(todoList));
+  };
+
   return (
     <div className="Todo">
       <Header title="Meine Todo-Liste" />
@@ -121,7 +128,11 @@ function Todo() {
           setNewTodo={setNewTodo}
           handleSubmit={handleSubmit}
         />
-        <SearchTodo search={search} setSearch={setSearch} />
+        <SearchTodo
+          search={search}
+          setSearch={setSearch}
+          onChange={handleSearch}
+        />
         <p>Anzahl Todos: {anzahl}</p>
         <p>Erledigt: {erledigt}</p>
         <p>Offen: {offen}</p>
