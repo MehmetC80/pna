@@ -1,15 +1,16 @@
-const SearchTodo = ({ search, setSearch, onChange }) => {
+const SearchTodo = ({ search, setSearch }) => {
   return (
-    <form className="searchForm" onSubmit={(e) => e.preventDefault()}>
-      <label htmlFor="searchTodo">Suche</label>
+    <form className='searchForm' onSubmit={(e) => e.preventDefault()}>
+      <label htmlFor='searchTodo'>Suche</label>
 
       <input
         autoFocus
-        id="search"
-        type="text"
-        role="searchbox"
-        placeholder="Suche Todos"
+        id='search'
+        type='text'
+        role='searchbox'
+        placeholder='Suche Todos'
         value={search}
+        autoComplete='off'
         onChange={(e) => setSearch(e.target.value)}
       />
     </form>

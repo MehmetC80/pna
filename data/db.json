@@ -43,7 +43,13 @@
       "password": "12345678"
     }
   ],
-  "todos": [],
+  "todos": [
+    {
+      "id": 6,
+      "checked": false,
+      "todo": "sss"
+    }
+  ],
   "login": [
     {}
   ]
